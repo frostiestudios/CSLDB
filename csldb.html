@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css" />  
+    <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script> 
+    <script src="https://unpkg.com/leaflet-filelayer@1.2.0"></script>
+    <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-omnivore/v0.3.1/leaflet-omnivore.min.js'></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-gpx/1.7.0/gpx.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+    <style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+	</style>
+    <title>Enthusiast Maps Project</title>
+    
+</head>
+<body>
+    <div id="Titlebar">
+        Welcome to openAtlas for CSLDB 
+        <button>View On GitHub</button>
+
+    </div>
+    <div id="map">
+    <script>
+        
+        var map = L.map('map').setView([33.717629, -117.782495], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            
+        }).addTo(map);
+        //GPX
+        var gpx = 'ts43.gpx'; // URL to your GPX file or the GPX itself
+        new L.GPX(gpx, {async: true}).on('loaded', function(e) {
+        map.fitBounds(e.target.getBounds());
+        }).addTo(map);
+
+
+        
+        var school = L.icon({
+            iconUrl: 'icons/school.svg',
+            iconSize:     [24, 24], // size of the icon
+
+        })
+        L.marker([33.717629, -117.782495], {icon: school}).addTo(map)
+
+        var home = L.icon({
+            iconUrl: 'icons/home.svg',
+            iconSize: [24, 24], // size of the icon
+
+
+        })
+        L.marker([33.73590678736749, -117.77855471969504], {icon: home}).addTo(map)
+
+        var work = L.icon({
+            iconUrl: 'icons/airplane.svg',
+            iconSize:     [24, 24], // size of the icon
+
+        })
+        L.marker([33.80606936695866, -117.91103606568456], {icon: work}).addTo(map)
+        L.marker([51.50915, -0.096112], { pmIgnore: true }).addTo(map);  
+        var places = L.layerGroup([home, work, school]);
+        var usericon = L.icon({
+            iconUrl: 'icons/arrow1.svg',
+            iconSize: [24,24]
+        })
+
+
+        map.pm.addControls({  
+            position: 'topleft',  
+            drawCircle: false,  
+          });
+        
+
+        map.locate({setView: true, maxZoom: 16});
+        function onLocationFound(e) {
+            L.marker(e.latlng, {icon: usericon}).addTo(map)
+        
+        }
+        map.on('locationfound', onLocationFound)
+
+        
+    </script>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+    <title>Assets</title>
+</head>
+<h1>Assets</h1>
+<table>
+    <th>ID</th>
+    <th>SteamID</th>
+    <th>Name</th>
+    <th>URL</th>
+    %for row in rows:
+    <tr>
+        <td>{{row[0]}}</td>
+        <td>{{row[1]}}</td>
+    </tr>
+    %end
+</table>

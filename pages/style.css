@@ -1,0 +1,189 @@
+h1 {
+    margin-bottom: 0;
+}
+
+.subtitle {
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 10pt;
+}
+
+#controls {
+    display: none;
+}
+
+#controls > div.box {
+    position: relative;
+    display: inline-block;
+    border: 1px #ddd solid;
+    border-radius: 4px;
+    padding: 0px 10px 0px 5px;
+    margin: 0px 5px;
+}
+
+#controls > div.box > .collapsed {
+    position: absolute;
+    z-index: 1;
+    top: 1.5em;
+    padding: 10pt;
+    border: 1px #444 solid;
+    border-radius: 4px;
+    background-color: white;
+}
+
+#district-list {
+    width: 150px;
+}
+
+#route-list {
+    width: 275px;
+}
+
+#route-list .category th {
+    border-top: 1px #bbb solid;
+}
+
+#route-list tr :not(:nth-child(3)) {
+    text-align: center;
+}
+
+/* hide stops checkbox because we don't currently support stops too well */
+#route-list tr > *:nth-child(2) {
+    display: none;
+}
+
+#district-list > label {
+    display: block;
+}
+
+/* svg stuff */
+svg {
+    width: 100%;
+    height: auto;
+}
+
+svg text {
+    font-family: "San Francisco", "Lucida Grande", Verdana;
+    text-transform: uppercase;
+}
+
+svg #transit {
+    stroke-linecap: round;
+}
+
+svg #stops .stroked {
+    stroke: black;
+    stroke-width: 8;
+}
+
+svg #stops rect.stroked {
+    stroke-width: 16;
+}
+
+svg #stops circle {
+    fill: white;
+}
+
+svg #stops text {
+    font-size: 55pt;
+}
+
+svg #stops tspan {
+    stroke-width: 0;
+}
+
+svg #segments {
+    stroke: black;
+    stroke-linecap: round;
+}
+
+svg #segments .harbour {
+    stroke: red; 
+}
+
+svg #segments .airplane {
+    stroke: rgb(255, 187, 0);
+}
+
+svg #segments .bg .train {
+    stroke: black;
+}
+
+svg #segments .fg .train {
+    stroke-dasharray: 20px 20px;
+    stroke: white;
+}
+
+svg #segments .fg .highway {
+    stroke: orange;
+}
+
+svg #segments .bg .highway {
+    stroke: rgb(158, 103, 0);
+}
+
+svg #segments .power {
+    stroke: blue;
+}
+
+svg #segments .bg .road {
+    stroke: #ff7b00;
+}
+
+svg #segments .fg .road {
+    stroke: #ff7b00;
+}
+
+svg #segments .metro {
+    stroke: #bbb;
+}
+
+svg #segments .misc {
+    stroke: #888;
+}
+
+svg #buildings {
+    fill: rgb(255, 204, 204);
+    stroke: rgb(128, 102, 102);
+    stroke-width: 2;
+}
+
+svg #buildings .Residential {
+    fill: rgb(232, 255, 232);
+    stroke: rgb(107, 128, 107);
+}
+
+svg #buildings .Commercial {
+    fill: rgb(230, 230, 255);
+    stroke: rgb(107, 107, 128);
+}
+
+svg #buildings .Office {
+    fill: rgb(220, 255, 255);
+    stroke: rgb(107, 128, 128);
+}
+
+svg #buildings .Industrial {
+    fill: rgb(255, 255, 220);
+    stroke: rgb(128, 128, 107);
+}
+
+svg #tiles line {
+    stroke: rgba(0, 0, 0, 0.2);
+    stroke-dasharray: 100px 25px 25px 25px;
+    stroke-width: 30px;
+}
+
+svg #districts text {
+    font-size: 70pt;
+}
+
+svg #districts text.fill {
+    fill: #000;
+}
+
+svg #districts text.stroke {
+    fill: rgba(255, 255, 255, 0.8);
+    stroke: rgba(255, 255, 255, 0.8);
+    stroke-width: 12pt;
+}

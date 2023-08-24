@@ -2,11 +2,49 @@
 <html>
 <head>
   <title>Custom Leaflet Map</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <link rel="stylesheet" href="/pages/style.css">
+  <style id="dynamic-style"></style>
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="/pages/scripts/csl.js"></script>
 </head>
 <body>
-  <div id="map" style="height: 500px;"></div>
-  <script src="/pages/scripts/map.js"></script>
+  <h1 id="cityname">Cities: Skylines Web Map Viewer</h1>
+  <h2>REDUX</h2>
+  <p class="subtitle" id="subtitle"><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=845665815">CSL Map View</a> Web viewer</p>
+  <div id="controls">
+      <div class="box">Zoom <input id="zoom" type="range" name="zoom" value="0" min="0" max="350"> <span>100%</span></div>
+      <div class="box"><label><input type="checkbox" name="forests" checked> Show forests</label></div>
+      <div class="box"><label><input type="checkbox" name="segments" checked> Show roads</label></div>
+      <div class="box">
+          <label><input type="checkbox" name="transit+stops" checked> Show transit</label> <a href="#">•••</a>
+          <table class="collapsed" id="route-list">
+              <tr>
+                  <th>Line</th>
+                  <th>Stops</th>
+                  <th></th>
+              </tr>
+          </table>
+      </div>
+      <div class="box">
+          <label><input type="checkbox" name="districts" checked> Show districts</label> <a href="#">•••</a>
+          <div class="collapsed" id="district-list"></div>
+      </div>
+      <select id="buildings-style">
+          <option value="hard">Fill and stroke buildings</option>
+          <option value="soft">Fill buildings</option>
+          <option value="hide">Hide buildings</option>
+      </select>
+      <select id="download-as">
+          <option value="-" default>Download as...</option>
+          <option value="png4096">PNG (4096x4096)</option>
+          <option value="png2048">PNG (2048x2048</option>
+          <option value="svg">SVG</option>
+      </select>
+  </div>
+  <div id="contents">
+      <p>Drop your .cslmap file on this page to generate a view.</p>
+      <p>This Web interface does not understand compressed cslmap files: make sure to decompress files (or save them uncompressed) before you try to use them. Merely double-clicking them should suffice.</p>
+      <p>On macOS, you can find the .cslmap files at <code>~/Library/Application Support/Steam/steamapps/common/Cities_Skylines/CSLMapView</code>. You can easily access that folder through the Finder by hitting <kbd>⇧⌘G</kbd> and pasting that path into the dialog box.</kbd></p>
+  </div>
 </body>
-</html>
+
